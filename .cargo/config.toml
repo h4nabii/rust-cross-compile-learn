@@ -1,8 +1,17 @@
 [alias]
-# 一键构建全部目标平台（Windows x64/arm64、Linux musl x64/arm64）
-build-all = ["zigbuild", "--release",
-    "--target", "x86_64-pc-windows-gnu",
-    "--target", "aarch64-pc-windows-gnullvm",
-    "--target", "x86_64-unknown-linux-musl",
-    "--target", "aarch64-unknown-linux-musl",
+# 只构建全部目标平台（Windows x64/arm64、Linux musl x64/arm64），不收集产物
+build-all-only = [
+  "zigbuild",
+  "--release",
+  "--target",
+  "x86_64-pc-windows-gnu",
+  "--target",
+  "aarch64-pc-windows-gnullvm",
+  "--target",
+  "x86_64-unknown-linux-musl",
+  "--target",
+  "aarch64-unknown-linux-musl",
 ]
+
+# 一键构建全部目标并收集、改名产物到 dist/（内部会先跑 build-all-only）
+build-all = ["run", "--package", "xtask", "--"]
