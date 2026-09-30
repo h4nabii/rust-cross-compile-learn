@@ -1,7 +1,7 @@
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
-#[command(name = "cross-compile", version, about = "跨平台构建辅助工具")]
+#[command(version, about = "跨平台构建辅助工具")]
 struct Cli {
     #[command(subcommand)]
     command: Option<Commands>,
